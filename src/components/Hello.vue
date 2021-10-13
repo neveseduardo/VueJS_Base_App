@@ -1,17 +1,22 @@
 <template>
     <div>
-        <input v-model="username" />
+        <div class="message">
+            {{ message }}
+        </div>
+        Digite seu nome de usuário: <input v-model="username" />
         <div v-if="error" class="error">
-            {{ error }}
+            Por favor, digite um nome de usuário com pelo menos sete letras.
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Hello',
+    name: 'Foo',
+
     data() {
         return {
+            message: 'Bem-vindo ao livro de receitas do Vue.js',
             username: '',
         }
     },
@@ -19,8 +24,6 @@ export default {
     computed: {
         error() {
             return this.username.trim().length < 7
-                ? 'Por favor insira um nome de usuário mais longo'
-                : ''
         },
     },
 }

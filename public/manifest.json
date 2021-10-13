@@ -1,0 +1,8 @@
+{
+	"name": "vue_base",
+	"short_name": "vue_base",
+	"start_url": "./index.html",
+	"display": "standalone",
+	"background_color": "#000000",
+	"theme_color": "#941e1f"
+}
