@@ -8,20 +8,27 @@ import locale from 'element-ui/lib/locale/lang/pt-br'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import 'element-ui/lib/theme-chalk/index.css'
+import 'perfect-scrollbar/dist/css/perfect-scrollbar.css'
 import 'vue-loading-overlay/dist/vue-loading.css';
 import { methods } from '@/utils/methods'
+import SideBar from '@/components/UIComponents/SidebarPlugin'
+import links from '@/components/UIComponents/SidebarPlugin/links'
+import initProgress from '@/progressbar'
 
+Vue.use(SideBar, { sidebarLinks: links })
 Vue.use(ElementUI, {
-	locale
+    locale
 })
 Vue.mixin({
-	methods: methods
+    methods: methods
 })
 
 Vue.config.productionTip = false;
 
+initProgress(router);
+
 new Vue({
-  router,
-  store,
-  render: (h) => h(App),
+    router,
+    store,
+    render: (h) => h(App),
 }).$mount("#app");

@@ -1,2 +1,79 @@
 @import "modules/bootstrap/bootstrap";
-@import "modules/reset";
+@import "modules/variables";
+@import "modules/mixins";
+
+
+// Plugins CSS
+@import "modules/plugins/plugin-vue-notifyjs";
+@import "modules/plugins/plugin-bootstrap-switch";
+@import "modules/plugins/plugin-perfect-scrollbar";
+@import "modules/plugins/plugin-sweetalert2";
+@import "modules/plugins/plugin-card-wizard";
+@import "modules/plugins/plugin-jquery.jvectormap";
+@import "modules/plugins/plugin-fullcalendar";
+@import "modules/plugins/plugin-nprogress";
+
+// Element UI plugins
+@import "modules/plugins/element-ui/plugin-tags";
+@import "modules/plugins/element-ui/plugin-slider";
+@import "modules/plugins/element-ui/plugin-select";
+@import "modules/plugins/element-ui/plugin-inputs";
+@import "modules/plugins/element-ui/plugin-tables";
+
+// Core CSS
+@import "modules/nucleo-outline";
+@import "modules/buttons";
+@import "modules/social-buttons";
+@import "modules/animated-buttons";
+@import "modules/inputs";
+@import "modules/typography";
+@import "modules/misc";
+@import "modules/misc-extend";
+@import "modules/navbar";
+@import "modules/dropdown";
+@import "modules/alerts";
+@import "modules/images";
+@import "modules/tables";
+@import "modules/footers";
+
+// components
+@import "modules/checkboxes-radio";
+@import "modules/progress";
+@import "modules/badges";
+@import "modules/pagination";
+@import "modules/info-areas";
+@import "modules/pills";
+@import "modules/tabs";
+@import "modules/modals";
+@import "modules/sidebar-and-main-panel";
+@import "modules/timeline";
+
+// cards
+@import "modules/cards";
+@import "modules/cards/card-chart";
+@import "modules/cards/card-map";
+@import "modules/cards/card-user";
+
+@import "modules/cards/card-background";
+@import "modules/cards/card-collapse";
+@import "modules/cards/card-contributions";
+@import "modules/cards/card-info-area";
+@import "modules/cards/card-lock";
+@import "modules/cards/card-pricing";
+@import "modules/cards/card-profile";
+@import "modules/cards/card-plain";
+@import "modules/cards/card-signup";
+@import "modules/cards/card-stats-mini";
+@import "modules/cards/card-stats";
+@import "modules/cards/card-subcategories";
+@import "modules/cards/card-testimonials";
+@import "modules/cards/card-tasks";
+
+// example pages and sections
+@import "modules/example-pages";
+@import "modules/sections";
+
+@import "modules/responsive";
+@import "modules/media-queries";
+
+@import "modules/custom_reset";

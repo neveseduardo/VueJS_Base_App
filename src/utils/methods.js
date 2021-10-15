@@ -2,6 +2,21 @@ import moment from 'moment'
 import validator from '@/utils/validator'
 
 export const methods = {
+    redirect(routerName) {
+        let path = routerName.includes('/') ? routerName : {
+            name: routerName
+        }
+        return this.$router.push(path)
+    },
+    capitalize(string) {
+        string = string.toLowerCase()
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    },
+    scrollTo(selector) {
+        $('html,body').animate({
+            scrollTop: $(selector).offset().top - 60
+        }, 800);
+    },
     globalSort(data, prop, order) {
         return data.sort((a, b) => {
             if (order === null) {
