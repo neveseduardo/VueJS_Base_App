@@ -10,7 +10,7 @@ const routes = [
     {
         path: '',
         component: HomeLayout,
-        redirect: 'home',
+        redirect: 'admin',
         children: [{
             path: 'home',
             component: () => import('@/views/Home/Home.vue'),
@@ -69,16 +69,21 @@ const routes = [
             },
         ]
     },
-    // { path: '*', component: NotFound }
+    { path: '*', component: NotFound }
 ];
 
 const createRouter = () => new Router({
     //mode: 'history', // não funciona com laravel nativamente
-    scrollBehavior: () => ({
-        y: 0
-    }),
     base: '/',
     routes: routes,
+    linkActiveClass: 'active',
+    scrollBehavior: (to) => {
+        if (to.hash) {
+            return { selector: to.hash }
+        } else {
+            return { x: 0, y: 0 }
+        }
+    }
 });
 
 const router = createRouter();

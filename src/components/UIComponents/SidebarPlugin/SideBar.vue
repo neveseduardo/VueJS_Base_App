@@ -8,17 +8,27 @@
             <a
                 class="simple-text logo-mini"
                 aria-label="sidebar mini logo"
-                href="/#/admin"
+                href="#"
+                @click.prevent="redirect({ name: 'Admin' })"
             >
                 <div class="logo-img">
-                    <img src="http://www.gravatar.com/avatar/?d=retro&s=32" alt="Dashboard logo" />
+                    <img
+                        src="http://www.gravatar.com/avatar/?d=retro&s=32"
+                        alt="Dashboard logo"
+                    />
                 </div>
             </a>
-            <a class="simple-text logo-normal" href="/#/admin">
+            <a
+                class="simple-text logo-normal"
+                href="/#/admin"
+            >
                 {{ title }}
             </a>
         </div>
-        <div class="sidebar-wrapper" ref="sidebarScrollArea">
+        <div
+            class="sidebar-wrapper"
+            ref="sidebarScrollArea"
+        >
             <slot> </slot>
             <ul class="nav">
                 <slot name="links">
@@ -45,7 +55,7 @@ export default {
     props: {
         title: {
             type: String,
-            default: 'Dashboard',
+            default: process.env.VUE_APP_TITLE,
             description: 'Sidebar title',
         },
         backgroundColor: {

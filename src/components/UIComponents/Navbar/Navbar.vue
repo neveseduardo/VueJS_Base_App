@@ -8,7 +8,7 @@
                     @click="toggleMenu"
                     aria-expanded="true"
                     aria-label="Toggle navigation"
-                    class="navbar-toggler"
+                    class="navbar-toggler second"
                     data-toggle="collapse"
                     type="button"
                 >

@@ -1,4 +1,5 @@
 import moment from 'moment'
+import messages from '@/utils/messages'
 import validator from '@/utils/validator'
 
 export const methods = {
@@ -107,18 +108,11 @@ export const methods = {
 
     },
     formatMoney(value) {
-        value = String(value).replace(/\D/g, '')
-        value = String((Number(value) / 100).toFixed(2))
-        value = value.replace('.', ',')
-        value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-        return `R$ ${value.replace('R$ ', '')}`
-    },
-    formatBTC(value) {
-        value = String(value).replace(/\D/g, '')
-        value = String((Number(value) / 100).toFixed(2))
-        value = value.replace('.', ',')
-        value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-        return `BTC ${value.replace('BTC ', '')}`
+        return new Intl.NumberFormat('pt-br', {
+            style: 'currency',
+            currency: 'BRL',
+            minimumFractionDigits: 2,
+        }).format(value)
     },
     treatBooleanFor(data) {
         let ret = data
@@ -136,6 +130,81 @@ export const methods = {
             })
         return ret
     },
+    scrollToTop(className) {
+        setTimeout(() => {
+            let section = $(className)
+
+            if (section.length) {
+                let top = section.offset().top
+                $('html, body').animate({ scrollTop: top }, 800)
+            }
+
+        }, 300)
+    },
+    notSelectedPeople() {
+        if (this.people === null) {
+            this.$notify({
+                title: 'Atenção!',
+                message: messages.notSelect,
+                type: 'warning'
+            })
+            this.$router.push('/pessoal/pesquisar')
+            return false
+        }
+        return true
+    },
+    enableDisableField() {
+        if (this.hasUpdate === false && this.showInsert) return false
+        if (this.hasUpdate === true && this.showEdit) return false
+        else return true
+    },
+    emptyString(str) {
+        return str === '';
+    },
+    treatHistory(res) {
+        let { history, last } = res.object
+
+        if (history !== undefined && history !== null) {
+            history.map((data, index) => {
+                data.index = index + 1
+                this.treatNullFor(data)
+                data['Data_Exercicio_Apresentacao'] = this.formatDate(data['Data_Exercicio_Apresentacao'])
+                data['data_Exoneracao_Desligamento'] = this.formatDate(data['data_Exoneracao_Desligamento'])
+                data['data_aposentadoria'] = this.formatDate(data['data_aposentadoria'])
+            })
+            if (history.length > 0) {
+                this.setAdmissionHistory(history)
+            }
+        }
+        if (last !== undefined && last !== null) {
+            this.treatNullFor(last)
+            this.setAdmission(last)
+            this.updatePeople(last.cod_pessoal)
+        }
+
+    },
+    formatDate(date) {
+        if (date === null || date === "" || date === undefined) return ''
+        if (!date.includes('-')) return date
+
+        date = date.split(' ')[0].split('-')
+        date = date[2] + '/' + date[1] + '/' + date[0]
+
+        return date
+    },
+    formatToAmericanDate(date) {
+        if (date === null || date === "" || date === undefined) return ''
+        if (!date.includes('/')) return date
+
+        if (date.indexOf("-") !== -1) {
+            return date.split(' ')[0]
+        }
+
+        if (date !== null) {
+            date = date.split(' ')[0].split('/')
+            return date[2] + '-' + date[1] + '-' + date[0]
+        }
+    },
     clearErrors(field = null) {
         let { errors } = this.form
         if (field !== null) {
@@ -146,6 +215,38 @@ export const methods = {
     clearAllErrors() {
         if (this.isEmpty(this.form.errors)) return false
         Object.entries(this.form.errors).map(([k, v], i) => this.form.errors[k] = '')
+    },
+    treatNullField(field) {
+        return field === null ? '' : field
+    },
+    treatBooleanField(field) {
+        if (field !== "") {
+            return field === "1" ? true : false
+        }
+        return false
+    },
+    notifyError(error) {
+        NProgress.done()
+        this.loading = false
+        console.log(error.response)
+        this.$notify({
+            message: error.response
+                ? (error.response.data.response
+                    ? error.response.data.response.message
+                    : error.response.data.message)
+                : messages.connectError,
+            type: 'danger'
+        })
+    },
+    setScrollTop() {
+        setTimeout(() => {
+            let section = $('.data-table')
+            if (section.length) {
+                let top = section.offset().top
+                $('html, body').animate({ scrollTop: top }, 800)
+            }
+
+        }, 300)
     },
     phoneMask(v) {
         let r = v.replace(/\D/g, "");
@@ -163,7 +264,7 @@ export const methods = {
         }
         return r;
     },
-    validateWithRules(field, rules){
+    validateWithRules(field, rules) {
         this.clearAllErrors()
         return validator.validate(this.form, this.form.errors, {
             [String(field)]: rules,
@@ -216,13 +317,55 @@ export const methods = {
         }
         return validator.validate(this.form, this.form.errors, rules) && this.clearErrors(field)
     },
-    debug(params, type= 'info') {
-        const { NODE_ENV:env } = process.env
+    validateSEI(field = null) {
+        field = field === null ? 'numero_sei' : field
+        let rules = {
+            [field]: this.form[field] !== "" ? ['minChar:13'] : []
+        }
+        return validator.validate(this.form, this.form.errors, rules) && this.clearErrors(field)
+    },
+    nationalitiesChange(item) {
+        this.clearErrors('city')
+        this.clearErrors('arrivalYear')
+        this.clearErrors('nationality')
+        this.form.nationality = item
+
+        if (item <= 2) {
+            this.isOutOfBazil = false
+            this.form.arrivalYear = ''
+        } else {
+            this.isOutOfBazil = true
+            this.form.federativeUnit = ''
+            this.form.city = ''
+        }
+
+    },
+    cityChanged(item) {
+        this.clearErrors('city')
+        const { cities } = this.select
+        cities.map((city, index) => {
+            if (city.cod_municipio === item) {
+                this.form.federativeUnit = city.descricaoUF
+            }
+        })
+    },
+    validateCity() {
+        if (!this.isOutOfBazil) {
+            if (this.form.city === null || this.form.city === '') {
+                this.form.errors.city = messages.empty
+                return false
+            }
+        }
+        this.form.errors.city = ''
+        return true
+    },
+    debug(params, type = 'info') {
+        const { NODE_ENV: env } = process.env
 
         if (env !== 'production') {
-            return type === 'info' 
-            ? console.log('INFO LOG', params) 
-            : console.error('ERROR LOG: ', params)
+            return type === 'info'
+                ? console.log('INFO LOG', params)
+                : console.error('ERROR LOG: ', params)
         }
         return null
     },

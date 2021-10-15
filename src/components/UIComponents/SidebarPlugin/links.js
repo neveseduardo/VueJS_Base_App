@@ -1,10 +1,5 @@
 export default [
     {
-        name: "Meu Perfil",
-        icon: "ti-user",
-        path: "/admin/profile",
-    },
-    {
         name: "Notificações",
         icon: "ti-bell",
         path: "/admin/notifications",

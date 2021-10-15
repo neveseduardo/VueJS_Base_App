@@ -14,7 +14,11 @@ import { methods } from '@/utils/methods'
 import SideBar from '@/components/UIComponents/SidebarPlugin'
 import links from '@/components/UIComponents/SidebarPlugin/links'
 import initProgress from '@/progressbar'
+import JQuery from 'jquery'
+import VueTheMask from 'vue-the-mask'
 
+window.$ = JQuery
+Vue.use(VueTheMask)
 Vue.use(SideBar, { sidebarLinks: links })
 Vue.use(ElementUI, {
     locale

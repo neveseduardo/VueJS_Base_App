@@ -1,5 +1,5 @@
 <template>
-    <div class='card'>
+    <div class='card row'>
         <div class='card-body'>
             <h5>Configurações</h5>
         </div>

@@ -134,11 +134,13 @@
       margin-right: 3px;
 
       i.fa + p,
+      i.ti-icon + p,
       i.nc-icon + p {
         margin-left: 3px;
       }
 
       i.fa,
+      i.ti-icon,
       i.nc-icon {
         font-size: 18px;
         position: relative;
@@ -147,7 +149,8 @@
         width: 21px;
       }
 
-      i.nc-icon {
+      i.nc-icon, 
+      i.ti-icon {
         top: 4px;
         font-size: 16px;
       }

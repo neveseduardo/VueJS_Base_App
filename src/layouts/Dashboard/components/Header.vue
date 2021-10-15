@@ -10,7 +10,7 @@
                     <i class="ti-menu-alt text-center visible-on-sidebar-mini"></i>
                     <i
                         style="transform: rotate(90deg)"
-                        class="ti-more-alt text-centervisible-on-sidebar-regular"
+                        class="ti-more-alt text-center visible-on-sidebar-regular"
                     ></i>
                 </button>
             </div>
@@ -54,10 +54,8 @@
                     trigger="click"
                 >
                     <div class="avatar-wrapper nav-link">
-                        <i class="fa fa-bell"></i>
-                        <i class="el-icon-caret-bottom" />
-
-                        <span class="d-lg-none d-md-block">ALERTAS</span>
+                        <i class="ti-bell ti-icon"></i>
+                        <p class="notifications">5<b class="caret"></b></p>
                     </div>
                     <el-dropdown-menu slot="dropdown">
                         <router-link to="/profile/index">
@@ -87,7 +85,7 @@
                     trigger="click"
                 >
                     <div class="avatar-wrapper nav-link">
-                        <i class="fa fa-user"></i>
+                        <i class="ti-user ti-icon"></i>
                         <i class="el-icon-caret-bottom" />
 
                         <span class="d-lg-none d-md-block">CONFIGURAR PERFIL</span>
@@ -96,7 +94,7 @@
                         <el-dropdown-item>
                             <a
                                 href="#"
-                                @click.prevent="redirect('UserProfile')"
+                                @click.prevent="redirect({ name: 'Profile' })"
                                 class="d-block"
                             >Meu prefil</a>
                         </el-dropdown-item>
