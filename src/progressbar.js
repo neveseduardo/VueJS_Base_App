@@ -1,4 +1,5 @@
 import NProgress from 'nprogress';
+import { logged } from '@/services/authentication'
 
 const delay = 100;
 let resolved = false;
@@ -12,17 +13,21 @@ function tryInitProgress() {
     }, delay);
 }
 export default function initProgress(router) {
-    router.beforeEach((to, from, next) => {
+    router.beforeEach(async (to, from, next) => {
         tryInitProgress();
-        // para verificar dentro da rota se ela é uma rota que necesita de autenticação
-        // to.meta.auth
-        // Para redirecionar para o login caso não esteja autenticado
-        // return next({ name: 'Login'})
-        // Para redirecionar para o dashpoard caso esteja autenticado
-        // return next({ name: 'Admin'})
-        // para seguir o fluxo
-        return next()
 
+        const isLogged = await logged()
+
+        if (to.meta.auth && !isLogged) {
+            resolved = true;
+            return next({ name: 'Login' })
+        } else {
+            if (to.name === "Login" && isLogged) {
+                return next({ name: 'Dashboard' })
+            }
+            resolved = true;
+            return next()
+        }
     });
 
     router.afterEach(() => {

@@ -1,74 +1,16 @@
 import Vue from "vue";
 import Router from "vue-router";
 import NotFound from '@/views/Error/NotFound'
-import DashboardLayout from '@/layouts/Dashboard'
-import HomeLayout from '@/layouts/Home'
+import AuthRoutes from '@/router/modules/Authentication'
+import DashboardRoutes from '@/router/modules/Dashboard'
+import HomeRoutes from '@/router/modules/Home'
 
 Vue.use(Router);
 
 const routes = [
-    {
-        path: '',
-        component: HomeLayout,
-        redirect: 'admin',
-        children: [{
-            path: 'home',
-            component: () => import('@/views/Home/Home.vue'),
-            name: 'Home',
-            meta: {
-                title: 'Home',
-                auth: false,
-                role: 'user'
-            },
-        },],
-    },
-    {
-        path: '/admin',
-        component: DashboardLayout,
-        redirect: 'admin/dashboard',
-        children: [
-            {
-                path: 'dashboard',
-                component: () => import('@/views/Dashboard/Dashboard.vue'),
-                name: 'Dashboard',
-                meta: {
-                    auth: true,
-                    role: 'admin',
-                    title: 'Dashboard'
-                },
-            },
-            {
-                path: 'profile',
-                component: () => import('@/views/Dashboard/Profile.vue'),
-                name: 'Perfil',
-                meta: {
-                    auth: true,
-                    role: 'admin',
-                    title: 'Perfil'
-                },
-            },
-            {
-                path: 'settings',
-                component: () => import('@/views/Dashboard/Settings.vue'),
-                name: 'Configurações',
-                meta: {
-                    auth: true,
-                    role: 'admin',
-                    title: 'Configurações'
-                },
-            },
-            {
-                path: 'notifications',
-                component: () => import('@/views/Dashboard/Notifications.vue'),
-                name: 'Notificações',
-                meta: {
-                    auth: true,
-                    role: 'admin',
-                    title: 'Notificações'
-                },
-            },
-        ]
-    },
+    AuthRoutes,
+    DashboardRoutes,
+    HomeRoutes,
     { path: '*', component: NotFound }
 ];
 

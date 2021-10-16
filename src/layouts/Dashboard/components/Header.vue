@@ -101,7 +101,7 @@
                         <el-dropdown-item>
                             <a
                                 class="d-block"
-                                @click.prevent="logout"
+                                @click.prevent="logOut()"
                             >Sair</a>
                         </el-dropdown-item>
                     </el-dropdown-menu>
@@ -113,6 +113,7 @@
 
 <script>
 import { Navbar, NavbarToggleButton } from 'src/components/UIComponents'
+import { logout } from '@/services/authentication'
 
 export default {
     components: {
@@ -132,6 +133,10 @@ export default {
         }
     },
     methods: {
+        logOut() {
+            logout()
+            this.redirect({ name: 'Login'})
+        },
         onClear() {
             this.$refs.autocompleteWrapper.focus()
         },

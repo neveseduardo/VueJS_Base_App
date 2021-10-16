@@ -4,10 +4,7 @@ import validator from '@/utils/validator'
 
 export const methods = {
     redirect(routerName) {
-        let path = routerName.includes('/') ? routerName : {
-            name: routerName
-        }
-        return this.$router.push(path)
+        return this.$router.push(routerName)
     },
     capitalize(string) {
         string = string.toLowerCase()
@@ -369,4 +366,11 @@ export const methods = {
         }
         return null
     },
+    generateToken() {
+        let ret = ''
+        Array.from(new Array(20), (x, i) => i).map(i => {
+            ret += Math.random().toString(36).substr(2)
+        })
+        return ret
+    }
 }
