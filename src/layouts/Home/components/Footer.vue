@@ -1,10 +1,16 @@
 <template>
-    <h1>Home footer</h1>
+    <footer class="home-footer">
+        <p>&copy; Criado por {{ author }}</p>
+    </footer>
 </template>
 
 <script>
-export default {}
-</script>
 
-<style>
-</style>
+export default {
+    computed: {
+        author() {
+            return process.env.VUE_APP_AUTHOR
+        }
+    }
+}
+</script>

@@ -1,13 +1,10 @@
 <template>
-  <h1>Home header</h1>
+  <header class="home-header">
+        <h1>Home</h1>
+        <nav><ul>
+            <li>
+                <router-link to="/admin">Dashboard</router-link>
+            </li>
+        </ul></nav>
+    </header>
 </template>
-
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
-</style>
