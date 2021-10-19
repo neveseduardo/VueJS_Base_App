@@ -112,18 +112,23 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    if (this.login()) {
-                        const logIn = login({
-                            ...this.form,
-                            token: this.generateToken(),
-                        })
+                    this.loading = true
+                    
+                    setTimeout(() => {
+                        if (this.login()) {
+                            const logIn = login({
+                                ...this.form,
+                                token: this.generateToken(),
+                            })
 
-                        if (logIn) {
-                            return this.redirect({ name: 'Dashboard'})
+                            if (logIn) {
+                                this.loading = false
+                                return this.redirect({ name: 'Dashboard' })
+                            }
                         }
-                    }
-
-                    this.$message.error('Erro ao autenticar!')
+                        this.loading = false
+                        this.$message.error('Erro ao autenticar!')
+                    }, 1000)
                 } else {
                     console.log('error submit!!')
                     return false

@@ -10,7 +10,7 @@ import '@fortawesome/fontawesome-free/js/all.js'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'perfect-scrollbar/dist/css/perfect-scrollbar.css'
 import 'vue-loading-overlay/dist/vue-loading.css';
-import { methods } from '@/utils/methods'
+import { methods, filters } from '@/utils'
 import SideBar from '@/components/UIComponents/SidebarPlugin'
 import links from '@/components/UIComponents/SidebarPlugin/links'
 import initProgress from '@/progressbar'
@@ -24,7 +24,8 @@ Vue.use(ElementUI, {
     locale
 })
 Vue.mixin({
-    methods: methods
+    methods: methods,
+    filters: filters
 })
 
 Vue.config.productionTip = false;

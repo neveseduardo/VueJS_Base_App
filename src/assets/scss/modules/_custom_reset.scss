@@ -374,3 +374,35 @@
     font-weight: bold;
 }
 
+.themify-container {
+
+    .icon-container {
+        span::before {
+            width:40px ;
+            display: inline-block;
+        }
+    }
+}
+
+.fontawesome-container {
+
+    .el-tabs__nav {
+        width: 100%;
+
+        .el-tabs__item {
+            width: calc(100% / 3) !important;
+            text-transform: uppercase;
+        }
+    }
+
+    .row article.col-12 {
+        min-height: 40px;
+        border-bottom: 1px solid rgba(#c2c2c2, .3);
+
+        i {
+            width: 40px;
+            display: inline-block;
+        }
+    }
+}
+

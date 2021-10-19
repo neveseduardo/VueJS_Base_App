@@ -11,7 +11,6 @@ export default {
             name: 'Dashboard',
             meta: {
                 auth: true,
-                role: 'admin',
                 title: 'Dashboard'
             },
         },
@@ -21,7 +20,6 @@ export default {
             name: 'Perfil',
             meta: {
                 auth: true,
-                role: 'admin',
                 title: 'Perfil'
             },
         },
@@ -31,7 +29,6 @@ export default {
             name: 'Configurações',
             meta: {
                 auth: true,
-                role: 'admin',
                 title: 'Configurações'
             },
         },
@@ -41,8 +38,43 @@ export default {
             name: 'Notificações',
             meta: {
                 auth: true,
-                role: 'admin',
                 title: 'Notificações'
+            },
+        },
+        {
+            path: 'tables',
+            component: () => import('@/views/Dashboard/Tables.vue'),
+            name: 'Tables',
+            meta: {
+                auth: true,
+                title: 'Tables'
+            },
+        },
+        {
+            path: 'forms',
+            component: () => import('@/views/Dashboard/Forms.vue'),
+            name: 'Forms',
+            meta: {
+                auth: true,
+                title: 'Forms'
+            },
+        },
+        {
+            path: 'themifyicons',
+            component: () => import('@/views/Dashboard/ThemifyIcons.vue'),
+            name: 'ThemifyIcons',
+            meta: {
+                auth: true,
+                title: 'ThemifyIcons'
+            },
+        },
+        {
+            path: 'fontawesomeicons',
+            component: () => import('@/views/Dashboard/FontAwesomeIcons.vue'),
+            name: 'Fontawesome',
+            meta: {
+                auth: true,
+                title: 'Fontawesome'
             },
         },
     ]

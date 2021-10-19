@@ -21,7 +21,7 @@
             <a
                 class="navbar-brand"
                 href="#pablo"
-            >{{ this.$route.name }}</a>
+            >{{ this.$route.meta.title }}</a>
         </div>
 
         <template slot="navbar-menu">
@@ -134,8 +134,18 @@ export default {
     },
     methods: {
         logOut() {
-            logout()
-            this.redirect({ name: 'Login'})
+            this.$confirm('Você está saindo. Confirma logout?', 'Atenção!', {
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Cancelar',
+                type: 'warning',
+            })
+                .then(() => {
+                    logout()
+                    this.redirect({ name: 'Login' })
+                })
+                .catch(() => {
+                    // retorno do cancelar
+                })
         },
         onClear() {
             this.$refs.autocompleteWrapper.focus()

@@ -17,7 +17,6 @@ import NavbarToggleButton from './Navbar/NavbarToggleButton'
 import Tabs from './Tabs/Tabs'
 import TabPane from './Tabs/Tab'
 import Modal from './Modal'
-
 import TimeLine from './TimeLine/TimeLine'
 import TimeLineItem from './TimeLine/TimeLineItem'
 import IconCheckbox from './Inputs/IconCheckbox'

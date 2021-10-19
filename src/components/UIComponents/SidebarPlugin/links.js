@@ -10,6 +10,26 @@ export default [
         path: "/admin/settings",
     },
     {
+        name: "Tabelas",
+        icon: "ti-view-list-alt",
+        path: "/admin/tables",
+    },
+    {
+        name: "Formulários",
+        icon: "ti-clipboard",
+        path: "/admin/forms",
+    },
+    {
+        name: "Themify",
+        icon: "ti-themify-favicon",
+        path: "/admin/themifyicons",
+    },
+    {
+        name: "Fontawesome",
+        icon: "fab fa-font-awesome",
+        path: "/admin/fontawesomeicons",
+    },
+    {
         name: "Posts",
         icon: "ti-pencil-alt",
         children: [
