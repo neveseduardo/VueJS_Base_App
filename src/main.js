@@ -16,8 +16,10 @@ import links from '@/components/UIComponents/SidebarPlugin/links'
 import initProgress from '@/progressbar'
 import JQuery from 'jquery'
 import VueTheMask from 'vue-the-mask'
+import Money from 'v-money'
 
 window.$ = JQuery
+Vue.use(Money, { precision: 4 })
 Vue.use(VueTheMask)
 Vue.use(SideBar, { sidebarLinks: links })
 Vue.use(ElementUI, {

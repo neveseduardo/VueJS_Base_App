@@ -9,4 +9,6 @@ export default {
 	connectError: 'Falha ao se comunicar com o servidor.',
     confirmDelete: 'Deseja desativar este registro?',
     unauthenticated: 'Erro! falha na autenticação',
+    required: 'Campo obrigatório.',
+    email: 'Formato de email inválido.'
 }
