@@ -53,6 +53,7 @@
 import validator from '@/utils/validator'
 import { methods } from '@/utils/methods'
 import { login } from '@/services/authentication'
+import NProgress from 'nprogress'
 
 export default {
     data() {
@@ -113,6 +114,7 @@ export default {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
                     this.loading = true
+                    NProgress.start()
                     
                     setTimeout(() => {
                         if (this.login()) {
@@ -127,6 +129,7 @@ export default {
                             }
                         }
                         this.loading = false
+                        NProgress.done()
                         this.$message.error('Erro ao autenticar!')
                     }, 1000)
                 } else {

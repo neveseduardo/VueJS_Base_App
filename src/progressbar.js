@@ -9,7 +9,6 @@ export default function initProgress(router) {
             const isLogged = await logged()
 
             if (to.meta.auth && !isLogged) {
-                resolved = true;
                 return next({ name: 'Login' })
             } else {
                 if (to.name === "Login" && isLogged) {

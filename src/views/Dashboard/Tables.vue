@@ -6,7 +6,7 @@
             <el-button
                 @click.prevent="exportCSV"
                 class="float-right"
-                type="info"
+                type="success"
                 circle
                 icon="el-icon-download"
                 title="Baixar arquivo SCV"
@@ -53,7 +53,13 @@
             @sort-change="tableSort"
             :data="queriedData"
             border
+            @selection-change="handleSelectionChange"
         >
+            <!-- <el-table-column
+                type="selection"
+                width="55"
+            >
+            </el-table-column> -->
             <el-table-column
                 :sort-method="(a, b) => 0"
                 :sortable="'custom'"
@@ -65,18 +71,18 @@
             ></el-table-column>
 
             <el-table-column
-                :min-width="150"
+                :min-width="120"
                 class-name="td-actions"
                 label="Ações"
                 fixed="right"
             >
                 <template slot-scope="props">
-                    <el-button
+                    <!-- <el-button
                         @click.prevent="action('edit', props.row)"
-                        type="plain"
+                        type="primary"
                         icon="el-icon-search"
                         circle
-                    ></el-button>
+                    ></el-button> -->
                     <el-button
                         @click.prevent="action('edit', props.row)"
                         type="info"
@@ -116,6 +122,7 @@
 import Pagination from '@/components/UIComponents/Pagination.vue'
 import users from '@/components/UIComponents/users.js'
 import XLSX from 'xlsx'
+import { messages } from '@/utils'
 
 export default {
     components: {
@@ -154,6 +161,7 @@ export default {
                 },
             ],
             tableData: [],
+            multipleSelection: [],
         }
     },
     computed: {
@@ -203,6 +211,19 @@ export default {
         },
     },
     methods: {
+        toggleSelection(rows) {
+            if (rows) {
+                rows.forEach((row) => {
+                    this.$refs.multipleTable.toggleRowSelection(row)
+                })
+            } else {
+                this.$refs.multipleTable.clearSelection()
+            }
+        },
+        handleSelectionChange(val) {
+            this.multipleSelection = val
+        },
+
         action(action, row) {
             if (action === 'delete') {
                 this.deleteData(row)
@@ -211,11 +232,20 @@ export default {
                 this.editData(row)
             }
         },
+        viewRow(row) {
+            this.$message('Visualizar')
+        },
         editData(row) {
             this.$message('Editar')
         },
         async deleteData(row) {
-            this.$message('Deletei')
+            this.$confirm('Confirma a desativação do registro?', 'Cuidado!', {
+                confirmButtonText: 'Desativar',
+                cancelButtonText: 'Cancelar',
+                type: 'error',
+            }).then(() => {
+                this.$message({ message: messages.delete, type: 'success' })
+            })
         },
         tableSort({ prop, order }) {
             this.globalSort(this.tableData, prop, order)

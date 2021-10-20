@@ -12,7 +12,7 @@
     padding: $padding-btn-vertical $padding-btn-horizontal;
     cursor: pointer;
 
-    @include btn-styles($default-color, $default-states-color);
+    @include btn-styles($dark-color, $default-states-color);
     @include transition($fast-transition-time, linear);
 
     &:hover,
