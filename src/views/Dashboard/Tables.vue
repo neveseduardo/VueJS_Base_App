@@ -18,12 +18,12 @@
                 <div class="row mb-2">
                     <div class="col-6 col-md-3">
                         <el-select
-                            class="select-primary"
+                            class="select-default"
                             v-model="pagination.perPage"
                             placeholder="Por página"
                         >
                             <el-option
-                                class="select-primary"
+                                class="select-default"
                                 v-for="item in pagination.perPageOptions"
                                 :key="item"
                                 :label="item"

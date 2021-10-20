@@ -96,6 +96,7 @@
 
 <script>
 import { messages, methods, validator } from '@/utils'
+import NProgress from 'nprogress'
 
 export default {
     data() {
@@ -189,7 +190,6 @@ export default {
                 }
             })
         },
-        
     },
 }
 </script>
