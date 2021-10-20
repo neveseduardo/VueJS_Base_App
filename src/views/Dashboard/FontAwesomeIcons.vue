@@ -9,7 +9,7 @@
                         id="solid"
                         class=""
                     >
-                        <h2 class="">Solid Icons</h2>
+                        <h6 class="">Solid Icons</h6>
                         <div class="row">
                             <article
                                 id="ad"
@@ -9030,7 +9030,7 @@
                         class="cheatsheet-set"
                     >
                         <div class="flex flex-row flex-nowrap items-start justify-between">
-                            <h2 class="mt0 mb4 f5 fw6">Regular Icons</h2>
+                            <h6 class="mt0 mb4 f5 fw6">Regular Icons</h6>
                         </div>
                         <div class="row">
                             <article
@@ -10401,7 +10401,7 @@
                         id="brands"
                         class="cheatsheet-set"
                     >
-                        <h2 class="mt0 mb4 f5 fw6">Brand Icons</h2>
+                        <h6 class="mt0 mb4 f5 fw6">Brand Icons</h6>
                         <div class="row">
                             <article
                                 id="500px"

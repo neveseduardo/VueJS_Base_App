@@ -372,5 +372,12 @@ export const methods = {
             ret += Math.random().toString(36).substr(2)
         })
         return ret
-    }
+    },
+    clearValidate(formName, name) {
+        this.$refs[formName].validateField(name)
+    },
+    resetForm(formName) {
+        this.$refs[formName].clearValidate()
+        this.$refs[formName].resetFields()
+    },
 }

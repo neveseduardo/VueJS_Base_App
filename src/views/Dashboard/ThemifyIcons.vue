@@ -5,7 +5,7 @@
 
             <div class="card-content all-icons">
                 <div class="icon-section">
-                    <h3>Arrows &amp; Direction Icons </h3>
+                    <h6>Arrows &amp; Direction Icons </h6>
                     <div class='row'>
                         <div class="icon-container col-12 col-md-3 form-group"><span class="ti-arrow-up"></span> <span class="icon-name"> ti-arrow-up</span></div>
                         <div class="icon-container col-12 col-md-3 form-group"><span class="ti-arrow-right"></span> <span class="icon-name"> ti-arrow-right</span></div>
@@ -42,7 +42,7 @@
                         <div class="icon-container col-12 col-md-3 form-group"><span class="ti-exchange-vertical"></span> <span class="icon-name"> ti-exchange-vertical</span></div>
                     </div>
                 </div>
-                <h3>Web App Icons</h3>
+                <h6>Web App Icons</h6>
                 <div class="icon-section">
                     <div class='row'>
                         <div class="icon-container col-12 col-md-3 form-group"><span class="ti-wand"></span> <span class="icon-name"> ti-wand</span></div>
@@ -238,7 +238,7 @@
                     </div>
                 </div>
                 <div class="icon-section">
-                    <h3>Control Icons</h3>
+                    <h6>Control Icons</h6>
                     <div class='row'>
                         <div class="icon-container col-12 col-md-3 form-group"><span class="ti-control-stop"></span> <span class="icon-name"> ti-control-stop</span></div>
                         <div class="icon-container col-12 col-md-3 form-group"><span class="ti-control-shuffle"></span> <span class="icon-name"> ti-control-shuffle</span></div>
@@ -254,7 +254,7 @@
                     </div>
                 </div>
                 <div class="icon-section">
-                    <h3>Text Editor</h3>
+                    <h6>Text Editor</h6>
                     <div class='row'>
                         <div class="icon-container col-12 col-md-3 form-group"><span class="ti-paragraph"></span> <span class="icon-name"> ti-paragraph</span></div>
                         <div class="icon-container col-12 col-md-3 form-group"><span class="ti-uppercase"></span> <span class="icon-name"> ti-uppercase</span></div>
@@ -273,7 +273,7 @@
                     </div>
                 </div>
                 <div class="icon-section">
-                    <h3>Layout Icons</h3>
+                    <h6>Layout Icons</h6>
                     <div class='row'>
 
                         <div class="icon-container col-12 col-md-3 form-group"><span class="ti-layout-width-full"></span> <span class="icon-name"> ti-layout-width-full</span></div>
@@ -341,7 +341,7 @@
                     </div>
                 </div>
                 <div class="icon-section">
-                    <h3>Brand Icons</h3>
+                    <h6>Brand Icons</h6>
                     <div class='row'>
 
                         <div class="icon-container col-12 col-md-3 form-group"><span class="ti-flickr"></span> <span class="icon-name"> ti-flickr</span></div>

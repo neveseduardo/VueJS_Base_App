@@ -53,7 +53,7 @@
                                 class="el-input__inner"
                                 v-model="ruleForm.salary"
                                 v-bind="money"
-                                @blur.native="validateSalary"
+                                @blur.native="clearValidate('ruleForm', 'salary')"
                             ></money>
                         </el-form-item>
                     </el-col>
@@ -122,21 +122,13 @@ export default {
         }
     },
     methods: {
-        validateSalary() {
-            const { salary } = this.ruleForm
-
-            if (!methods.isEmpty(salary)) return false
-            if (validator.isEmail(salary)) return false
-
-            return this.$refs.ruleForm.clearValidate()
-        },
         customRules() {
             return {
                 name: [
                     {
                         required: true,
                         message: messages.required,
-                        trigger: 'change',
+                        trigger: 'blur',
                     },
                 ],
                 email: [
@@ -150,7 +142,7 @@ export default {
                             }
                             return callback()
                         },
-                        trigger: 'change',
+                        trigger: 'blur',
                     },
                 ],
                 salary: [
@@ -161,14 +153,14 @@ export default {
                             }
                             return callback()
                         },
-                        trigger: 'change',
+                        trigger: 'blur',
                     },
                 ],
                 age: [
                     {
                         required: true,
                         message: messages.required,
-                        trigger: 'change',
+                        trigger: 'blur',
                     },
                 ],
             }
@@ -197,13 +189,7 @@ export default {
                 }
             })
         },
-        resetForm(formName) {
-            this.$refs[formName].resetFields()
-            this.$refs[formName].clearValidate()
-        },
+        
     },
 }
 </script>
-
-<style>
-</style>
