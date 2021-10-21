@@ -3,6 +3,12 @@
     height: 60px;
     padding: 0 5%;
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background-color: $dark-color;
+    box-shadow: 0 5px 5px 5px rgba($dark-color, 0.2);
 
     h1 {
         margin: 0;
@@ -10,69 +16,216 @@
         flex: 1;
         line-height: 60px;
         text-transform: uppercase;
+        display: flex;
+
+        a {
+            color: $white-color;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toggle {
+            display: flex;
+            line-height: 60px;
+            align-items: center;
+            padding: 0 1rem;
+            color: tomato;
+        }
     }
 
     nav ul {
-        margin: 0;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        height: 100%;
+        width: 300px;
+        background-color: $dark-color;
+        transition: all 300ms ease-in-out;
+        -webkit-transition: all 300ms ease-in-out;
         padding: 0;
-        list-style-type: none !important;
+        margin: 0;
+        list-style-type: none;
+        z-index: 100;
 
-        li a {
-            display: block;
+        .toggle {
+            display: flex;
+            width: 100%;
             line-height: 60px;
+            height: 60px;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 1rem;
+            color: $white-color;
+            transition: all 300ms ease-in-out;
+            -webkit-transition: all 300ms ease-in-out;
+            position: relative;
+            text-decoration: none;
+            margin-bottom: 5px;
+
+            &::before {
+                content: "";
+                width: 100%;
+                height: 5px;
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                background-color: $default-color;
+            }
+
+            &::after {
+                content: "";
+                width: 0;
+                height: 5px;
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+            }
+
+            &:hover::after {
+                transition: all 0.7s ease-in-out;
+                -webkit-transition: all 0.7s ease-in-out;
+                background-color: tomato;
+                width: 100%;
+            }
+        }
+
+        li {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                display: block;
+                color: $white-color;
+                padding: 0 1rem;
+                text-transform: uppercase;
+                line-height: 60px;
+                text-decoration: none;
+            }
         }
     }
-}
 
+    nav ul.show {
+        left: 0 !important;
+        transition: all 300ms ease-in-out;
+        -webkit-transition: all 300ms ease-in-out;
+        box-shadow: 0 5px 5px 10px rgba($dark-color, 0.2);
+    }
+}
 
 .home-container {
     width: 100%;
-    min-height: calc(100vh - 120px);
-    padding: 2rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    .home-wrapper {
-        width: 400px;
-        max-width: 100%;
+    min-height: calc(100vh - 60px);
+    padding-top: 60px;
 
+    .page-banner,
+    .page-author {
+        min-height: 600px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        padding: 2rem 5%;
+        display: flex;
+        align-items: center;
         text-align: center;
 
-        i.ti-lock {
-            background-color: #409EFF !important;
-            width:40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: tomato;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            // clip-path: polygon(100% 0, 100% 40%, 0 100%, 0 60%);
+        }
+        &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: $dark-color;
+            position: absolute;
+            top: 0;
+            left: 0;
+            clip-path: circle(70% at 0 100%);
+            z-index: -1;
         }
 
-        h2 {
-            text-transform: uppercase;
+        .row {
+            width: 100%;
+
+            .col-12 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .el-button {
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+
+                img {
+                    max-width: 60%;
+                    margin: 1rem 0;
+                }
+            }
         }
 
-        .el-button+.el-button {
-            margin-left: 0 !important;
+        .page-banner-text {
+            margin: 0;
+            width: 100%;
+            border-radius: 10px;
+            color: $white-color;
+
+            h1 {
+                // text-transform: uppercase;
+                font-size: 2rem;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            @media screen and (min-width: 760px) {
+                text-align: left;
+
+                h1 {
+                    // text-transform: uppercase;
+                    font-size: 3rem;
+                    font-weight: bold;
+                }
+
+                p {
+                    font-size: 1.3rem;
+                    margin-bottom: 2rem;
+                }
+            }
         }
     }
-}
 
+    .page-author::after {
+        clip-path: circle(70% at 0 0);
+        background-color: tomato;
+    }
+    .page-author::before {
+        background-color: $dark-color;
+    }
+}
 
 .home-footer {
     width: 100%;
     height: 60px;
     padding: 0 5%;
     display: flex;
+    background-color: $dark-color;
 
     p {
         margin: 0;
         padding: 0;
         flex: 1;
         line-height: 60px;
+        color: tomato;
     }
 }
