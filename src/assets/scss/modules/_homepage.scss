@@ -1,35 +1,41 @@
+$home-header-height: 70px !default;
+$section-height: calc(100vh - 140px) !default;
+$home-header-background-color: $white-color !default;
+$home-header-text-color: $dark-color !default;
+$home-header-secondary-color: tomato !default;
+
 .home-header {
     width: 100%;
-    height: 60px;
+    height: $home-header-height;
     padding: 0 5%;
     display: flex;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 200;
-    background-color: $dark-color;
-    box-shadow: 0 5px 5px 5px rgba($dark-color, 0.2);
+    background-color: $home-header-background-color;
+    box-shadow: 0 5px 5px 5px rgba($dark-color, 0.1);
 
     h1 {
         margin: 0;
         font-size: 1.5rem;
         flex: 1;
-        line-height: 60px;
+        line-height: $home-header-height;
         text-transform: uppercase;
         display: flex;
 
         a {
-            color: $white-color;
+            color: $home-header-text-color;
             text-decoration: none;
             font-weight: bold;
         }
 
         .toggle {
             display: flex;
-            line-height: 60px;
+            line-height: $home-header-height;
             align-items: center;
             padding: 0 1rem;
-            color: tomato;
+            color: $home-header-secondary-color;
         }
     }
 
@@ -39,7 +45,7 @@
         left: -300px;
         height: 100%;
         width: 300px;
-        background-color: $dark-color;
+        background-color: $home-header-background-color;
         transition: all 300ms ease-in-out;
         -webkit-transition: all 300ms ease-in-out;
         padding: 0;
@@ -50,12 +56,12 @@
         .toggle {
             display: flex;
             width: 100%;
-            line-height: 60px;
-            height: 60px;
+            line-height: $home-header-height;
+            height: $home-header-height;
             justify-content: flex-end;
             align-items: center;
             padding: 0 1rem;
-            color: $white-color;
+            color: $home-header-secondary-color;
             transition: all 300ms ease-in-out;
             -webkit-transition: all 300ms ease-in-out;
             position: relative;
@@ -84,7 +90,7 @@
             &:hover::after {
                 transition: all 0.7s ease-in-out;
                 -webkit-transition: all 0.7s ease-in-out;
-                background-color: tomato;
+                background-color: $home-header-secondary-color;
                 width: 100%;
             }
         }
@@ -95,10 +101,10 @@
 
             a {
                 display: block;
-                color: $white-color;
+                color: $home-header-text-color;
                 padding: 0 1rem;
                 text-transform: uppercase;
-                line-height: 60px;
+                line-height: $home-header-height;
                 text-decoration: none;
             }
         }
@@ -114,119 +120,70 @@
 
 .home-container {
     width: 100%;
-    min-height: calc(100vh - 60px);
-    padding-top: 60px;
+    min-height: $section-height;
+    padding-top: $home-header-height;
+    background-color: $home-header-secondary-color;
 
-    .page-banner,
-    .page-author {
-        min-height: 600px;
+    .home-section {
         width: 100%;
-        overflow: hidden;
-        position: relative;
-        padding: 2rem 5%;
-        display: flex;
-        align-items: center;
-        text-align: center;
+        min-height: $section-height;
+        background-color: $white-color;
 
-        &::before {
-            content: "";
+        .home-section-wrapper {
+            padding: 2rem 5%;
             width: 100%;
-            height: 100%;
-            background-color: tomato;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -2;
-            // clip-path: polygon(100% 0, 100% 40%, 0 100%, 0 60%);
+            min-height: $section-height;
         }
-        &::after {
-            content: "";
-            width: 100%;
-            height: 100%;
-            background-color: $dark-color;
-            position: absolute;
-            top: 0;
-            left: 0;
-            clip-path: circle(70% at 0 100%);
-            z-index: -1;
+        .home-section-wrapper.home-section-main.home-contact {
+            h4 {
+                margin: .75rem 0 .5rem;
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
         }
-
-        .row {
+        .home-section-wrapper.home-section-main {
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             .col-12 {
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
-                align-items: center;
-
-                .el-button {
-                    text-transform: uppercase;
-                    font-weight: bold;
-                }
-
-                img {
-                    max-width: 60%;
-                    margin: 1rem 0;
-                }
-            }
-        }
-
-        .page-banner-text {
-            margin: 0;
-            width: 100%;
-            border-radius: 10px;
-            color: $white-color;
-
-            h1 {
-                // text-transform: uppercase;
-                font-size: 2rem;
-                font-weight: bold;
-            }
-
-            p {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-            }
-
-            @media screen and (min-width: 760px) {
-                text-align: left;
 
                 h1 {
-                    // text-transform: uppercase;
-                    font-size: 3rem;
+                    text-transform: uppercase;
                     font-weight: bold;
+                    font-size: 3rem;
                 }
 
                 p {
-                    font-size: 1.3rem;
-                    margin-bottom: 2rem;
+                    font-size: 1.5rem;
+                }
+
+                img {
+                    max-width: 70%;
+                    margin: 0 auto;
                 }
             }
         }
-    }
-
-    .page-author::after {
-        clip-path: circle(70% at 0 0);
-        background-color: tomato;
-    }
-    .page-author::before {
-        background-color: $dark-color;
     }
 }
 
 .home-footer {
     width: 100%;
-    height: 60px;
+    height: $home-header-height;
     padding: 0 5%;
     display: flex;
-    background-color: $dark-color;
+    background-color: $home-header-background-color;
 
     p {
         margin: 0;
         padding: 0;
         flex: 1;
-        line-height: 60px;
-        color: tomato;
+        line-height: $home-header-height;
+        color: $home-header-text-color;
     }
 }
 

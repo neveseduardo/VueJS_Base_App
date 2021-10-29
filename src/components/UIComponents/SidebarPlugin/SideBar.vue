@@ -9,7 +9,7 @@
                 class="simple-text logo-mini"
                 aria-label="sidebar mini logo"
                 href="#"
-                @click.prevent="redirect({ name: 'Admin' })"
+                @click.prevent="redirect({ name: 'Dashboard' })"
             >
                 <div class="logo-img">
                     <img
