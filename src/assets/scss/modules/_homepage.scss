@@ -151,20 +151,65 @@ $home-header-secondary-color: tomato !default;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                text-align: center;
 
                 h1 {
                     text-transform: uppercase;
                     font-weight: bold;
-                    font-size: 3rem;
+                    font-size: 1.2rem;
                 }
 
                 p {
-                    font-size: 1.5rem;
+                    font-size: 1rem;
                 }
 
                 img {
                     max-width: 70%;
-                    margin: 0 auto;
+                    margin: 0 auto 2rem;
+                }
+            }
+
+            @media screen and (min-width: 720px) {
+                .col-12 {
+                    text-align: left;
+
+                    h1 {
+                        font-size: 2rem;
+                    }
+    
+                    p {
+                        font-size: 1rem;
+                    }
+                }
+            }
+            @media screen and (min-width: 1200px) {
+                .col-12 {
+                    h1 {
+                        font-size: 2.5rem;
+                    }
+    
+                    p {
+                        font-size: 1.3rem;
+                    }
+
+                    img {
+                        max-width: 60%;
+                    }
+                }
+            }
+            @media screen and (min-width: 1200px) {
+                .col-12 {
+                    h1 {
+                        font-size: 3rem;
+                    }
+    
+                    p {
+                        font-size: 1.5rem;
+                    }
+
+                    img {
+                        max-width: 50%;
+                    }
                 }
             }
         }
@@ -184,6 +229,11 @@ $home-header-secondary-color: tomato !default;
         flex: 1;
         line-height: $home-header-height;
         color: $home-header-text-color;
+        text-align: center;
+
+        @media screen and (min-width: 760px) {
+            text-align: left;
+        }
     }
 }
 
